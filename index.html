@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/profileImage_imran.jpg">
+    <title>Muhammad Imran</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0055A4',
+                        secondary: '#1D7ED6',
+                        accent: '#9EBBDC',
+                        dark: '#003366',
+                        light: '#1973d8',
+                        grey: '#6B7280'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Existing styles */
+        body {
+            background-color: #f3f2ee;
+        }
+
+        .sidebar {
+            scrollbar-width: thin;
+            scrollbar-color: white transparent;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background-color: --var(bg-primary);
+            border-radius: 3px;
+        }
+
+        .content-section {
+            transition: opacity 0.3s ease;
+        }
+
+        .active-section {
+            opacity: 1;
+            display: block;
+        }
+
+        .inactive-section {
+            opacity: 0;
+            display: none;
+        }
+
+        .publication-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item {
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        /* New responsive navigation styles */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #0077B5;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .mobile-nav-title {
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .mobile-nav-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: --var(bg-primary);
+            padding: 0 20px 20px;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu-btn {
+            width: 100%;
+            text-align: left;
+            padding: 12px 15px;
+            color: white;
+            background: transparent;
+            border: none;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu-btn i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Adjust sidebar for mobile */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: static;
+                height: auto;
+                display: none;
+            }
+
+            .mobile-nav {
+                display: block;
+            }
+
+            .main-content {
+                margin-top: 70px;
+            }
+        }
+    </style>
+</head>
+
+<body class="text-dark font-sans">
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-content">
+            <div class="w-12 h-12 flex items-center justify-center">
+                <img class="rounded-full" src="images/profileImage_imran.jpg" alt="Muhammad Imran's Profile Picture">
+            </div>
+            <div class="mobile-nav-title">Muhammad Imran</div>
+            <button class="mobile-nav-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <button onclick="showSection('about')" class="mobile-menu-btn">
+                <i class="fas fa-user"></i> About
+            </button>
+            <button onclick="showSection('achievements')" class="mobile-menu-btn">
+                <i class="fas fa-user"></i> Achievements
+            </button>
+            <button onclick="showSection('cv')" class="mobile-menu-btn">
+                <i class="fas fa-file-briefcase"></i> Experience
+            </button>
+            <button onclick="showSection('projects')" class="mobile-menu-btn">
+                <i class="fas fa-flask"></i> Projects
+            </button>
+            <button onclick="showSection('publications')" class="mobile-menu-btn">
+                <i class="fas fa-book"></i> Publications
+            </button>
+            <!-- <button onclick="showSection('articles')" class="mobile-menu-btn">
+                <i class="fas fa-newspaper"></i> Articles
+            </button> -->
+            <!-- <button onclick="showSection('gallery')" class="mobile-menu-btn">
+                <i class="fas fa-images"></i> Gallery
+            </button> -->
+        </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row min-h-screen">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar w-full md:w-64 bg-primary text-white p-6 md:fixed md:h-screen overflow-y-auto">
+            <div class="flex flex-col items-center">
+                <div class="bg-gray-200 border-2 border-dashed rounded-xl w-32 h-32 mb-4 overflow-hidden">
+                    <div class="bg-gray-300 w-full h-full flex items-center justify-center">
+                        <img src="images/profileImage_imran.jpg" alt="Muhammad Imran's Profile Picture">
+                    </div>
+                </div>
+
+                <h1 class="text-xl font-bold">Muhammad Imran</h1>
+                <p class="text-center mt-1">Ph.D. Candidate <br> at University of L'Aquila</p>
+                <p class="text-sm"><i class="fas fa-location-dot mr-1"></i> L'Aquila, Italy</p>
+            </div>
+
+            <nav class="space-y-2 border-t border-accent mt-3 pt-1">
+                <button onclick="showSection('about')"
+                    class="nav-btn w-full text-left py-1 px-4 rounded-lg flex items-center hover:bg-light transition-colors duration-200">
+                    <i class="fas fa-user mr-3"></i> About
+                </button>
+                <button onclick="showSection('achievements')"
+                    class="nav-btn w-full text-left py-1 px-4 rounded-lg flex items-center hover:bg-light transition-colors duration-200">
+                    <i class="fa-solid fa-medal mr-3">‌</i> Achievements
+                </button>
+                <button onclick="showSection('cv')"
+                    class="nav-btn w-full text-left py-1 px-4 rounded-lg flex items-center hover:bg-light transition-colors duration-200">
+                    <i class="fas fa-user-tie mr-3"></i> Experience
+                </button>
+                <button onclick="showSection('projects')"
+                    class="nav-btn w-full text-left py-1 px-4 rounded-lg flex items-center hover:bg-light transition-colors duration-200">
+                    <i class="fas fa-tools mr-3"></i> Projects
+                </button>
+                <button onclick="showSection('publications')"
+                    class="nav-btn w-full text-left py-1 px-4 rounded-lg flex items-center hover:bg-light transition-colors duration-200">
+                    <i class="fas fa-file-alt mr-3"></i> Publications
+                </button>
+                <!-- <button onclick="showSection('articles')"
+                    class="nav-btn w-full text-left py-1 px-4 rounded-lg flex items-center hover:bg-light transition-colors duration-200">
+                    <i class="fas fa-newspaper mr-3"></i> Articles
+                </button> -->
+            </nav>
+
+            <div class="mt-3 pt-1 border-t border-accent">
+                <h3 class="font-semibold mb-2">Website Traffic</h3>
+                <script type='text/javascript' id='clustrmaps'
+                    src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=tt&d=qkgDt71-zPwhELJf3BpkgBQV1B7Uz5MHd203F9igfwg&co=0b64c2&cmo=9e9e9e&cmn=4caf50&ct=ffffff'></script>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 md:ml-64 main-content">
+            <!-- About Section -->
+            <section id="about" class="content-section active-section p-6 md:p-10">
+                <div class="max-w-4xl mx-auto">
+                    <h1 class="text-3xl font-bold text-primary mb-6">About Me</h1>
+                    <div class="bg-white rounded-xl p-6 mb-8">
+                        <p class="mb-4">Hi, and thank you for visiting my profile. I’m Muhammad Imran, a researcher in
+                            Software Engineering currently based in Italy. I am completing my Ph.D. in Computer Science
+                            at the University of L’Aquila, where I work at the <a href="https://spencerlabaq.github.io/"
+                                class="text-secondary hover:underline" target="_blank">SPENCER Laboratory</a> under the
+                            supervision of <a href="https://spencerlabaq.github.io/author/vittorio-cortellessa/"
+                                class="text-secondary hover:underline" target="_blank">Prof. Vittorio Cortellessa</a>.
+                        </p>
+
+                        <p class="mb-4">My research focuses on automating performance problem detection in software
+                            systems using empirical methods, machine learning, and large language models (LLMs). I
+                            explore the relationship between source code features and performance behavior, and have
+                            worked on performance test coverage analysis, energy modeling in Java, and LLM-based
+                            performance bug detection. My work integrates static code analysis, profiling tools, and
+                            predictive modeling, with publications submitted to venues such as EMSE, EASE, and ICSME.
+                        </p>
+
+                        <p class="mb-4">In addition to research, I have over seven years of university-level teaching
+                            experience and enjoy simplifying complex technical concepts for learners at different
+                            levels. I’m especially interested in bridging theory and practice, and supporting the
+                            development of tools that help developers build efficient and reliable software.</p>
+
+                        <p class="mb-4">Feel free to explore my work or reach out for collaboration!</p>
+
+                        <div class="flex flex-wrap gap-2 justify-center">
+                            <div class="flex items-center">
+                                <i class="fab fa-linkedin text-secondary mr-2"></i>
+                                <a href="https://www.linkedin.com/in/imran9pk" target="_blank"
+                                    class="text-secondary hover:underline">imran9pk</a>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fab fa-github text-secondary mr-2"></i>
+                                <a href="http://www.github.com/imran9pk" target="_blank"
+                                    class="text-secondary hover:underline">imran9pk</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Achievements Section -->
+            <section id="achievements" class="content-section inactive-section p-6 md:p-10">
+                <div class="max-w-4xl mx-auto">
+                    <h1 class="text-3xl font-bold text-primary mb-6">Achievements</h1>
+
+                    <div class="bg-white rounded-xl p-6 mb-8">
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li><span
+                                    class="bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold mt-2 md:mt-0">June
+                                    2022</span> Ph.D. Scholarship, University of L'Aquila -- <a
+                                    href="https://www.univaq.it/include/utilities/blob.php?table=corso_dottorato&id=239&item=graduatoria"
+                                    class="text-secondary hover:underline" target="_blank">Awarded</a>
+                                for doctoral studies in Computer Science</li>
+                            <li><span
+                                    class="bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold mt-2 md:mt-0">Feb
+                                    2012</span> International Scholarship (MSc), King Abdulaziz University, Jeddah --
+                                Awarded for academic excellence in MSc Computer Science program</li>
+                            <li><span
+                                    class="bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold mt-2 md:mt-0">Sep
+                                    2006</span> Merit Scholarship (BSc), International Islamic University --
+                                Awarded for high academic performance in Software Engineering Undergraduate Program</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CV Section -->
+            <section id="cv" class="content-section inactive-section p-6 md:p-10">
+                <div class="max-w-4xl mx-auto">
+                    <h1 class="text-3xl font-bold text-primary mb-6">Curriculum Vitae</h1>
+                    <div class="bg-white rounded-xl p-6 mb-8">
+                        <!-- <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-2xl font-bold">Muhammad Imran</h2>
+                            <button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center">
+                                <i class="fas fa-download mr-2"></i> Download CV
+                            </button>
+                        </div> -->
+                        <!-- Education -->
+                        <div class="space-y-8">
+                            <div>
+                                <h3 class="text-xl font-semibold text-primary border-b pb-2 mb-3"><i
+                                        class="fa-solid fa-graduation-cap">‌</i> Education</h3>
+                                <div class="pl-2 space-y-4">
+                                    <div>
+                                        <h4 class="font-bold inline-block">Ph.D. in Information and Communication
+                                            Technologies
+                                        </h4>
+                                        <i class="fa-solid fa-angle-right ml-2 cursor-pointer"
+                                            onclick="toggleDetails(this)"></i>
+                                        <p>University of L’Aquila, Italy | 2022-2025</p>
+                                        <ul class="list-disc pl-5 hidden" id="details">
+                                            <li><b>Thesis:</b> On Automating Performance Problems Detection in Software
+                                                Systems through Empirical Analysis</li>
+                                            <li><b>Advisors:</b> <a
+                                                    href="https://spencerlabaq.github.io/author/vittorio-cortellessa/"
+                                                    target="_blank">Vittorio Cortellessa</a>,
+                                                <a href="https://scholar.google.com/citations?hl=en&user=Pn0T4rQAAAAJ"
+                                                    target="_blank">Davide Di Ruscio</a>,
+                                                <a href="https://spencerlabaq.github.io/author/luca-traini/"
+                                                    target="_blank">Luca Traini</a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold inline-block">Master of Science in Computer Science</h4>
+                                        <i class="fa-solid fa-angle-right ml-2 cursor-pointer"
+                                            onclick="toggleDetails(this)"></i>
+                                        <p>King Abdulaziz University, Jeddah, Saudi Arabia,
+                                            | 2012-2014</p>
+                                        <ul class="list-disc pl-5 hidden" id="details">
+                                            <li><b>Thesis:</b> <a
+                                                    href="https://fcitweb.kau.edu.sa/files/pdf/Muhammad%20Imran.pdf"
+                                                    target="_blank"> Agent Based Security Testing of Web Based
+                                                    Applications</a></li>
+                                            <li><b>Advisor:</b> <a
+                                                    href="https://scholar.google.com/citations?user=bVVdYeIAAAAJ"
+                                                    target="_blank">Fathy Elbouraey Eassa</a></li>
+                                        </ul>
+                                        <p class="text-sm italic">CGPA: 4.82/5.0</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold inline-block">Bachelor of Science in Software Engineering
+                                        </h4>
+                                        <i class="fa-solid fa-angle-right ml-2 cursor-pointer"
+                                            onclick="toggleDetails(this)"></i>
+                                        <p>International Islamic University Islamabad, Pakistan,
+                                            | 2006-2010</p>
+                                        <ul class="list-disc pl-5 hidden" id="details">
+                                            <li><b>Final Year Project:</b> 3D Action Racing Game</li>
+                                            <li><b>Advisor:</b> <a
+                                                    href="https://scholar.google.com/citations?hl=en&user=YkStqm8AAAAJ"
+                                                    target="_blank"> Shahbaz Ahmed</a></li>
+                                        </ul>
+                                        <p class="text-sm italic">CGPA: 3.83/4.0</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Experience -->
+                            <div>
+                                <h3 class="text-xl font-semibold text-primary border-b pb-2 mb-3"><i
+                                        class="fa-solid fa-briefcase">‌</i> Experience</h3>
+                                <div class="pl-2 space-y-4">
+                                    <div>
+                                        <h4 class="font-bold inline-block">Researcher (Scientific Collaborator)</h4>
+                                        <i class="fa-solid fa-angle-right ml-2 cursor-pointer"
+                                            onclick="toggleDetails(this)"></i>
+                                        <p>Software and Sustainability (S²) Group, Vrije Universiteit Amsterdam,
+                                            Netherlands | Feb 2025 – Apr 2025</p>
+                                        <ul class="list-disc pl-5 hidden" id="details">
+                                            <li><b>Project:</b> Energy Estimation from Static Code Features</li>
+                                            <li>Designed and implemented a pipeline to analyze energy usage at the Java
+                                                method level.</li>
+                                            <li>Modeled energy behavior using ML with static and dynamic features.</li>
+                                            <li>Worked on feature engineering, energy profiling, and ML model
+                                                development for energy estimation.</li>
+                                        </ul>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="font-bold inline-block">Lecturer</h4>
+                                        <i class="fa-solid fa-angle-right ml-2 cursor-pointer"
+                                            onclick="toggleDetails(this)"></i>
+                                        <p>International Islamic University, Islamabad, Pakistan | Feb 2019 – May 2022
+                                        </p>
+                                        <ul class="list-disc pl-5 hidden" id="details">
+                                            <li>Taught undergraduate courses in computer science and software
+                                                engineering.</li>
+                                            <li>Supervised Final Year Projects, mentoring students in research design
+                                                and implementation.</li>
+                                            <li>Contributed to departmental committees for project evaluations and
+                                                accreditation processes.</li>
+                                        </ul>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="font-bold inline-block">Lecturer</h4>
+                                        <i class="fa-solid fa-angle-right ml-2 cursor-pointer"
+                                            onclick="toggleDetails(this)"></i>
+                                        <p>Iqra University, Islamabad Campus, Pakistan | Jul 2015 – Jan 2019</p>
+                                        <ul class="list-disc pl-5 hidden" id="details">
+                                            <li>Delivered undergraduate computer science courses across core and
+                                                elective subjects.</li>
+                                            <li>Supervised Final Year Projects, offering academic and technical
+                                                mentorship.</li>
+                                            <li>Served as Undergraduate Project Coordinator, managing project workflows
+                                                and faculty-student coordination.</li>
+                                        </ul>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="font-bold inline-block">Software Engineer</h4>
+                                        <i class="fa-solid fa-angle-right ml-2 cursor-pointer"
+                                            onclick="toggleDetails(this)"></i>
+                                        <p>Diyatech Pvt. Ltd., Islamabad, Pakistan | Jul 2011 – Nov 2011</p>
+                                        <ul class="list-disc pl-5 hidden" id="details">
+                                            <li>Contributed to the development of “Storage Edge,” a Microsoft
+                                                SharePoint-based product.</li>
+                                            <li>Implemented software modules based on sprint-defined features and
+                                                deadlines.</li>
+                                            <li>Worked collaboratively in an Agile team environment to deliver
+                                                client-aligned functionality.</li>
+                                        </ul>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="font-bold inline-block">Jr. Software Engineer</h4>
+                                        <i class="fa-solid fa-angle-right ml-2 cursor-pointer"
+                                            onclick="toggleDetails(this)"></i>
+                                        <p>360 Technologies Pvt. Ltd., Islamabad, Pakistan | Sep 2010 – Apr 2011</p>
+                                        <ul class="list-disc pl-5 hidden" id="details">
+                                            <li>Participated in developing the Pakistan Navy Budget Management System.
+                                            </li>
+                                            <li>Involved in requirements gathering directly from end-users.</li>
+                                            <li>Designed and implemented new features based on stakeholder needs and
+                                                change requests.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="content-section inactive-section p-6 md:p-10">
+                <div class="max-w-4xl mx-auto">
+                    <h1 class="text-3xl font-bold text-primary mb-6">Projects</h1>
+
+                    <div class="space-y-8">
+                        <div class="bg-white rounded-xl p-6">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                                <h2 class="text-xl font-bold text-primary">Agent-Based Security Testing of Web
+                                    Applications</h2>
+                                <div class="flex flex-wrap gap-2">
+                                    <span
+                                        class="bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold mt-2 md:mt-0">
+                                        Sep 2013 – Apr 2014
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="mb-4">
+                                MSc thesis project focused on detecting vulnerabilities using static and dynamic code
+                                analysis. Designed a testing tool to support security assessment of Java-based web
+                                applications. Resulted in a peer-reviewed publication.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Security
+                                    Testing</span>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Java</span>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Static
+                                    Analysis</span>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Dynamic
+                                    Analysis</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl p-6">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                                <h2 class="text-xl font-bold text-primary">Arabic Plagiarism Detection System</h2>
+                                <div class="flex flex-wrap gap-2">
+                                    <span
+                                        class="bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold mt-2 md:mt-0">
+                                        Feb 2013 – May 2014
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="mb-4">
+                                Contributed to a departmental research project using NLP and similarity-based
+                                techniques. Focused on Arabic text processing and detection of cross-document reuse.
+                                Work contributed to a peer-reviewed publication.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">NLP</span>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Text
+                                    Similarity</span>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Arabic
+                                    Language</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl p-6">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                                <h2 class="text-xl font-bold text-primary">Storage Edge (Microsoft SharePoint)</h2>
+                                <div class="flex flex-wrap gap-2">
+                                    <span
+                                        class="bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold mt-2 md:mt-0">
+                                        May 2011 – Oct 2011
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="mb-4">
+                                Product developed at Diyatech to enhance Microsoft SharePoint storage and performance.
+                                Contributed to module development, integration, and sprint-aligned feature delivery.
+                                Collaborated with the engineering team in an Agile setup.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Microsoft
+                                    SharePoint</span>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Agile</span>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Sprint
+                                    Planning</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl p-6">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                                <h2 class="text-xl font-bold text-primary">Navy Budget Management System (BMS)</h2>
+                                <div class="flex flex-wrap gap-2">
+                                    <span
+                                        class="bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold mt-2 md:mt-0">
+                                        Sep 2010 – Apr 2011
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="mb-4">
+                                Developed for the Pakistan Navy to manage budgeting processes and workflows. Worked on
+                                requirements elicitation, system design, and implementation in ASP.NET (C#). Delivered
+                                core functionality in coordination with stakeholders and internal dev team.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">ASP.NET</span>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">C#</span>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Budgeting
+                                    Systems</span>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Publications Section -->
+            <section id="publications" class="content-section inactive-section p-6 md:p-10">
+                <div class="max-w-4xl mx-auto">
+                    <h1 class="text-3xl font-bold text-primary mb-6">Publications</h1>
+
+                    <div class="space-y-6">
+                        <div class="publication-card bg-white rounded-xl p-6 transition-all duration-300">
+                            <div class="flex items-start">
+                                <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 mr-4 flex-shrink-0">
+                                </div>
+                                <div>
+                                    <h2 class="text-xl font-bold">
+                                        Is Code Coverage of Performance Tests Related to Source Code Features? An
+                                        Empirical Study on Open-Source Systems
+                                    </h2>
+                                    <p class="text-secondary font-semibold">
+                                        <strong>Muhammad Imran</strong>, Vittorio Cortellessa, Davide Di Ruscio,
+                                        Riccardo Rubei, Luca Traini
+                                    </p>
+                                    <p class="text-sm mb-2">
+                                        Empirical Software Engineering (EMSE), 2025
+                                    </p>
+                                    <p></p>
+                                    <div class="mt-3 flex space-x-3">
+                                        <a href="http://dx.doi.org/10.2139/ssrn.4978352" target="_blank"
+                                            class="text-primary hover:underline flex items-center">
+                                            <i class="fas fa-file-pdf mr-1"></i> PDF
+                                        </a>
+                                        <a href="https://github.com/SpencerLabAQ/replication-package_performance-test-coverage"
+                                            target="_blank" class="text-primary hover:underline flex items-center">
+                                            <i class="fas fa-code-branch mr-1"></i> Replication Package
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card bg-white rounded-xl p-6 transition-all duration-300">
+                            <div class="flex items-start">
+                                <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 mr-4 flex-shrink-0">
+                                </div>
+                                <div>
+                                    <h2 class="text-xl font-bold">
+                                        An Empirical Study on Code Coverage of Performance Testing
+                                    </h2>
+                                    <p class="text-secondary font-semibold">
+                                        <strong>Muhammad Imran</strong>, Vittorio Cortellessa, Davide Di Ruscio,
+                                        Riccardo Rubei, Luca Traini
+                                    </p>
+                                    <p class="text-sm mb-2">
+                                        International Conference on Evaluation and Assessment in Software Engineering
+                                        (EASE), 2024
+                                    </p>
+                                    <p></p>
+                                    <div class="mt-3 flex space-x-3">
+                                        <a href="https://doi.org/10.1145/3661167.3661196" target="_blank"
+                                            class="text-primary hover:underline flex items-center">
+                                            <i class="fas fa-file-pdf mr-1"></i> PDF
+                                        </a>
+                                        <a href="https://github.com/SpencerLabAQ/replication-package_performance-test-coverage"
+                                            target="_blank" class="text-primary hover:underline flex items-center">
+                                            <i class="fas fa-code-branch mr-1"></i> Replication Package
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card bg-white rounded-xl p-6 transition-all duration-300">
+                            <div class="flex items-start">
+                                <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 mr-4 flex-shrink-0">
+                                </div>
+                                <div>
+                                    <h2 class="text-xl font-bold">
+                                        Dynamic Analysis for Security Testing of Web-Based Applications Using Agent
+                                        Technology
+                                    </h2>
+                                    <p class="text-secondary font-semibold">
+                                        <strong>Muhammad Imran</strong>, Khalid Jambi, Fawzi Eassa
+                                    </p>
+                                    <p class="text-sm mb-2">
+                                        4th Intl. Conf. on Advances in Computing, Communication and Information
+                                        Technology (CCIT), 2016
+                                    </p>
+                                    <p></p>
+                                    <div class="mt-3 flex space-x-3">
+                                        <a href="https://www.researchgate.net/publication/324062674_Dynamic_Analysis_for_Security_Testing_of_WEB_Based_Applications_Using_Agent_Technology"
+                                            target="_blank" class="text-primary hover:underline flex items-center">
+                                            <i class="fas fa-file-pdf mr-1"></i> PDF
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card bg-white rounded-xl p-6 transition-all duration-300">
+                            <div class="flex items-start">
+                                <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 mr-4 flex-shrink-0">
+                                </div>
+                                <div>
+                                    <h2 class="text-xl font-bold">
+                                        Query Optimization in Arabic Plagiarism Detection: An Empirical Study
+                                    </h2>
+                                    <p class="text-secondary font-semibold">
+                                        Imran H. Khan, M. A. Siddiqui, Khalid M. Jambi, <strong>Muhammad Imran</strong>,
+                                        Abdullah A. Bagais
+                                    </p>
+                                    <p class="text-sm mb-2">
+                                        International Journal of Intelligent Systems and Applications (IJISA), 7(1),
+                                        2015
+                                    </p>
+                                    <p></p>
+                                    <div class="mt-3 flex space-x-3">
+                                        <a href="https://doi.org/10.5815/ijisa.2015.01.07" target="_blank"
+                                            class="text-primary hover:underline flex items-center">
+                                            <i class="fas fa-file-pdf mr-1"></i> PDF
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card bg-white rounded-xl p-6 transition-all duration-300">
+                            <div class="flex items-start">
+                                <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 mr-4 flex-shrink-0">
+                                </div>
+                                <div>
+                                    <h2 class="text-xl font-bold">
+                                        Improving the Operating System Resource Management by Processes Simulation
+                                    </h2>
+                                    <p class="text-secondary font-semibold">
+                                        <strong>Muhammad Imran</strong>, Wajeeh Alhalabi
+                                    </p>
+                                    <p class="text-sm mb-2">
+                                        International Journal of Scientific & Engineering Research (IJSER), 5(2), 2014
+                                    </p>
+                                    <p></p>
+                                    <div class="mt-3 flex space-x-3">
+                                        <a href="https://www.academia.edu/download/50379382/Improving-the-Operating-System-Resource-Management.pdf"
+                                            target="_blank" class="text-primary hover:underline flex items-center">
+                                            <i class="fas fa-file-pdf mr-1"></i> PDF
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card bg-white rounded-xl p-6 opacity-80">
+                            <div class="flex items-start">
+                                <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 mr-4 flex-shrink-0">
+                                </div>
+                                <div>
+                                    <h2 class="text-xl font-bold">
+                                        An Empirical Investigation on the Use of Large Language Models for Performance
+                                        Bug Detection
+                                    </h2>
+                                    <p class="text-secondary font-semibold">
+                                        <strong>Muhammad Imran</strong>, Vittorio Cortellessa, Davide Di Ruscio,
+                                        Riccardo Rubei, Luca Traini
+                                    </p>
+                                    <p class="text-sm mb-2">Under Submission</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card bg-white rounded-xl p-6 opacity-80">
+                            <div class="flex items-start">
+                                <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 mr-4 flex-shrink-0">
+                                </div>
+                                <div>
+                                    <h2 class="text-xl font-bold">
+                                        Method-Level Energy Prediction in Java Using Code Features and Execution Time
+                                    </h2>
+                                    <p class="text-secondary font-semibold">
+                                        <strong>Muhammad Imran</strong>, Ivano Malavolta, Vincenzo Stoico
+                                    </p>
+                                    <p class="text-sm mb-2">Under Submission</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Articles Section -->
+            <!-- <section id="articles" class="content-section inactive-section p-6 md:p-10">
+                <div class="max-w-4xl mx-auto">
+                    <h1 class="text-3xl font-bold text-primary mb-6">Articles & Blog</h1>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white rounded-xl overflow-hidden">
+                            <div class="p-6">
+                                <span class="text-sm text-secondary font-semibold">May 25, 2025</span>
+                                <h2 class="text-xl font-bold mt-2 mb-3">Title</h2>
+                                <p class="mb-4">Description.</p>
+                                <a href=""
+                                    target="_blank"
+                                    class="text-primary font-semibold hover:underline flex items-center">
+                                    Read More <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+
+        </div>
+    </div>
+
+    <script>
+        // Section switching function
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active-section');
+                section.classList.add('inactive-section');
+            });
+
+            // Show selected section
+            document.getElementById(sectionId).classList.remove('inactive-section');
+            document.getElementById(sectionId).classList.add('active-section');
+
+            // Update active buttons
+            document.querySelectorAll('.nav-btn, .mobile-menu-btn').forEach(btn => {
+                btn.classList.remove('bg-light');
+            });
+
+            // Add active class to current button
+            document.querySelectorAll('.nav-btn, .mobile-menu-btn').forEach(btn => {
+                if (btn.getAttribute('onclick').includes(sectionId)) {
+                    btn.classList.add('bg-light');
+                }
+            });
+
+            // Close mobile menu after selection
+            document.getElementById('mobileMenu').classList.remove('active');
+        }
+
+        // Initialize with About section active
+        document.addEventListener('DOMContentLoaded', function () {
+            showSection('about');
+
+            // Mobile menu toggle
+            document.getElementById('mobileMenuBtn').addEventListener('click', function () {
+                const mobileMenu = document.getElementById('mobileMenu');
+                mobileMenu.classList.toggle('active');
+            });
+        });
+
+        // Toggle Button
+        function toggleDetails(icon) {
+            const parent = icon.parentNode;
+            const details = parent.querySelector('#details');
+            if (details.classList.contains('hidden')) {
+                details.classList.remove('hidden');
+                icon.classList.remove('fa-angle-right');
+                icon.classList.add('fa-angle-down');
+            } else {
+                details.classList.add('hidden');
+                icon.classList.remove('fa-angle-down');
+                icon.classList.add('fa-angle-right');
+            }
+        }
+    </script>
+</body>
+
+</html>
