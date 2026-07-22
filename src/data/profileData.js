@@ -56,14 +56,14 @@ export const profileData = {
       institution: "King Abdulaziz University",
       location: "Saudi Arabia",
       dates: "2012 – 2014",
-      details: "Graduated with High Honors (CGPA: 4.82 / 5.0). Specialization in Software Engineering and Agent-Based Systems. Supported by KAU International Scholarship."
+      details: "Thesis: Agent Based Security Testing of Web Based Applications, advised by Prof. Fathy Elbouraey Eassa. Supported by the KAU International Scholarship."
     },
     {
       degree: "B.Sc. in Software Engineering",
       institution: "International Islamic University Islamabad",
       location: "Pakistan",
       dates: "2006 – 2010",
-      details: "Graduated with Honors (CGPA: 3.83 / 4.0). Specialization in software design, development, and testing methodologies. Awarded Merit Scholarship."
+      details: "Awarded the Merit Scholarship for high academic performance."
     }
   ],
   experience: [
@@ -230,28 +230,16 @@ export const profileData = {
   ],
   teaching: [
     {
-      course: "Software Testing and Analysis",
-      role: "Lecturer / Lead Instructor",
-      institution: "International Islamic University Islamabad",
-      period: "Undergraduate Level"
-    },
-    {
-      course: "Object-Oriented Programming (Java / C++)",
-      role: "Lecturer / Lab Coordinator",
-      institution: "International Islamic University Islamabad",
-      period: "Undergraduate Level"
-    },
-    {
-      course: "Software Engineering & Architecture",
+      course: "Software Engineering, Requirements Engineering, Object-Oriented Analysis & Design, Software Testing",
       role: "Lecturer",
       institution: "International Islamic University Islamabad",
-      period: "Undergraduate Level"
+      period: "Feb 2019 – May 2022"
     },
     {
-      course: "Web Engineering & Design Patterns",
-      role: "Lecturer & Project Supervisor",
-      institution: "International Islamic University Islamabad & Iqra University",
-      period: "Undergraduate Level"
+      course: "Undergraduate Computer Science Courses",
+      role: "Lecturer",
+      institution: "Iqra University, Islamabad Campus",
+      period: "Jul 2015 – Jan 2019"
     }
   ],
   academicService: [
@@ -279,21 +267,6 @@ export const profileData = {
       venue: "AISA 2025 (International Workshop on AI-Assisted Software Architecting)",
       role: "Program Committee Member",
       year: "2025"
-    },
-    {
-      venue: "IEEE Transactions on Software Engineering (TSE)",
-      role: "Journal Reviewer",
-      year: "Ongoing"
-    },
-    {
-      venue: "Empirical Software Engineering (EMSE)",
-      role: "Journal Reviewer",
-      year: "Ongoing"
-    },
-    {
-      venue: "Journal of Systems and Software (JSS)",
-      role: "Journal Reviewer",
-      year: "Ongoing"
     }
   ],
   awards: [
