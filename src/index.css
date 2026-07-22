@@ -32,7 +32,7 @@ code, pre, .font-mono {
 .animate-marquee {
   display: flex;
   width: max-content;
-  animation: scroll-left 35s linear infinite;
+  animation: scroll-left 50s linear infinite;
 }
 
 .animate-marquee:hover {

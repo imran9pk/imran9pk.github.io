@@ -303,16 +303,6 @@ export default function App() {
                   <span className="font-heading text-xs font-bold font-mono">ORCID</span>
                 </a>
                 <a
-                  href={profileData.personal.socials.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded hover:border-indigo-500 dark:hover:border-indigo-400 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all"
-                  title="GitHub"
-                  data-testid="social-github-link"
-                >
-                  <Github className="w-4 h-4" />
-                </a>
-                <a
                   href={profileData.personal.socials.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -329,14 +319,6 @@ export default function App() {
                   data-testid="social-email-link"
                 >
                   <Mail className="w-4 h-4" />
-                </a>
-                <a
-                  href={profileData.personal.socials.portfolio}
-                  className="p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded hover:border-indigo-500 dark:hover:border-indigo-400 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all"
-                  title="Portfolio"
-                  data-testid="social-portfolio-link"
-                >
-                  <ExternalLink className="w-4 h-4" />
                 </a>
               </div>
             </div>

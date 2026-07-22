@@ -5,12 +5,12 @@ export const profileData = {
     institution: "SPENCER Laboratory, University of L’Aquila, Italy",
     location: "L'Aquila, Italy",
     tagline: "Empirical software engineering, software performance engineering, performance bug detection, performance testing, energy estimation, machine learning, and large language models for software engineering.",
-    avatar: process.env.PUBLIC_URL + "/images/profileImage_imran.svg",
+    avatar: process.env.PUBLIC_URL + "/images/profileImage_imran.jpg",
     email: "imran9pk@gmail.com",
     cvUrl: process.env.PUBLIC_URL + "/Muhammad_Imran_CV.pdf",
     socials: {
       scholar: "https://scholar.google.com/citations?user=S6gCcsMAAAAJ",
-      orcid: "https://orcid.org/", // General ORCID URL or search
+      orcid: "https://orcid.org/0009-0007-7931-8300",
       github: "https://github.com/imran9pk",
       linkedin: "https://linkedin.com/in/imran9pk",
       email: "mailto:imran9pk@gmail.com",
@@ -71,7 +71,7 @@ export const profileData = {
       role: "Postdoctoral Researcher",
       institution: "SPENCER Laboratory, University of L'Aquila",
       location: "Italy",
-      dates: "2025 – Present",
+      dates: "Dec 2025 – Present",
       description: "Conducting advanced research in software performance assurance, empirical analysis, and the applications of LLMs for automated performance bug detection and test code coverage optimization."
     },
     {
@@ -82,31 +82,31 @@ export const profileData = {
       description: "Collaborated on method-level energy estimation in Java systems with Dr. Ivano Malavolta. Explored the relationships between code features, execution time, and power consumption."
     },
     {
-      role: "Lecturer / Senior Lecturer",
+      role: "Lecturer",
       institution: "International Islamic University Islamabad",
       location: "Pakistan",
-      dates: "2014 – 2022",
-      description: "Taught undergraduate CS and SE courses including Software Engineering, Object-Oriented Programming, and Software Testing. Supervised 15+ capstone projects, mentored student groups, and acted as Academic Coordinator."
+      dates: "Feb 2019 – May 2022",
+      description: "Taught undergraduate CS and SE courses including Software Engineering, Requirements Engineering, Object-Oriented Analysis and Design, and Software Testing. Supervised final year projects and contributed to departmental accreditation committees."
     },
     {
       role: "Lecturer",
       institution: "Iqra University Islamabad Campus",
       location: "Pakistan",
-      dates: "2014 – 2015",
-      description: "Delivered lectures in core software engineering subjects and managed software project labs for undergraduate students."
+      dates: "Jul 2015 – Jan 2019",
+      description: "Delivered undergraduate CS courses and supervised final year projects with academic and technical mentorship, coordinating undergraduate project workflows."
     },
     {
       role: "Software Engineer",
       institution: "Diyatech Pvt. Ltd.",
       location: "Pakistan",
-      dates: "2011 – 2012",
+      dates: "May 2011 – Nov 2011",
       description: "Developed SharePoint enterprise solutions and optimized high-performance products including the 'Storage Edge' SharePoint optimization module."
     },
     {
       role: "Junior Software Engineer",
       institution: "360 Technologies Pvt. Ltd.",
       location: "Pakistan",
-      dates: "2010 – 2011",
+      dates: "Sep 2010 – Apr 2011",
       description: "Built specialized database systems, including the Budget Management System for the Pakistan Navy, focusing on data consistency and query performance."
     }
   ],
@@ -256,23 +256,28 @@ export const profileData = {
   ],
   academicService: [
     {
-      venue: "ISSTA 2026 (International Symposium on Software Testing and Analysis)",
-      role: "Program Committee / Reviewer",
+      venue: "ISSTA 2026 (ACM SIGSOFT International Symposium on Software Testing and Analysis)",
+      role: "Artifact Evaluation Committee Member",
+      year: "2026"
+    },
+    {
+      venue: "ASE 2026 (IEEE/ACM International Conference on Automated Software Engineering)",
+      role: "Artifact Evaluation Committee Member",
+      year: "2026"
+    },
+    {
+      venue: "MSR 2026 (International Conference on Mining Software Repositories)",
+      role: "Junior Program Committee Member, Technical Papers track",
       year: "2026"
     },
     {
       venue: "ECSA 2026 (European Conference on Software Architecture)",
-      role: "Program Committee / Reviewer",
+      role: "Open Science Committee Member",
       year: "2026"
     },
     {
-      venue: "MSR 2026 (Mining Software Repositories)",
-      role: "Program Committee / Reviewer",
-      year: "2026"
-    },
-    {
-      venue: "AISA 2025 (Artificial Intelligence for Software Assurance)",
-      role: "Program Committee / Reviewer",
+      venue: "AISA 2025 (International Workshop on AI-Assisted Software Architecting)",
+      role: "Program Committee Member",
       year: "2025"
     },
     {
@@ -293,25 +298,30 @@ export const profileData = {
   ],
   awards: [
     {
-      title: "Ph.D. Scholarship & Fellowship",
-      institution: "University of L’Aquila / Italian Government",
-      year: "2022",
-      description: "Fully funded three-year scholarship for doctoral studies in Information and Communication Technologies."
+      title: "Ph.D. Scholarship",
+      institution: "University of L’Aquila, Italy",
+      year: "2022 – 2025",
+      description: "Awarded for doctoral studies in Computer Science."
     },
     {
-      title: "International Research Scholarship",
-      institution: "King Abdulaziz University",
-      year: "2012",
-      description: "Prestigious academic award and full fellowship for M.Sc. in Computer Science."
+      title: "International Scholarship (MSc)",
+      institution: "King Abdulaziz University, Saudi Arabia",
+      year: "2012 – 2014",
+      description: "Awarded for academic excellence."
     },
     {
-      title: "Academic Merit Scholarship",
+      title: "Merit Scholarship (BSc)",
       institution: "International Islamic University Islamabad",
-      year: "2006",
-      description: "Undergraduate tuition waiver awarded for maintaining top academic standing throughout B.Sc. studies."
+      year: "2007 – 2010",
+      description: "Awarded for high academic performance."
     }
   ],
   news: [
+    {
+      date: "Jul 2026",
+      content: "New paper on predicting Java method energy usage with execution time accepted at QUATIC 2026! ⚡",
+      category: "publication"
+    },
     {
       date: "Jan 2026",
       content: "Paper on Large Language Models for Performance Bug Detection accepted at SANER 2026! 🚀",
@@ -319,11 +329,11 @@ export const profileData = {
     },
     {
       date: "Dec 2025",
-      content: "Honored to join the Program Committee for ISSTA 2026 and ECSA 2026! 📋",
+      content: "Honored to join the Artifact Evaluation Committee for ISSTA 2026 and the Open Science Committee for ECSA 2026! 📋",
       category: "service"
     },
     {
-      date: "Oct 2025",
+      date: "Dec 2025",
       content: "Successfully defended PhD dissertation at the University of L'Aquila and starting as a Postdoctoral Researcher! 🎓",
       category: "milestone"
     },
