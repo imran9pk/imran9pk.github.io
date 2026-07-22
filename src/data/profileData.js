@@ -5,7 +5,7 @@ export const profileData = {
     institution: "SPENCER Laboratory, University of L’Aquila, Italy",
     location: "L'Aquila, Italy",
     tagline: "Empirical software engineering, software performance engineering, performance bug detection, performance testing, energy estimation, machine learning, and large language models for software engineering.",
-    avatar: "https://imran9pk.github.io/images/profileImage_imran.jpg",
+    avatar: process.env.PUBLIC_URL + "/images/profileImage_imran.svg",
     email: "imran9pk@gmail.com",
     cvUrl: process.env.PUBLIC_URL + "/Muhammad_Imran_CV.pdf",
     socials: {
@@ -112,6 +112,18 @@ export const profileData = {
   ],
   publications: [
     {
+      id: "pub-quatic-2026",
+      title: "Static Metrics Are Insufficient: Predicting Java Method Energy Usage with Execution Time",
+      authors: "Muhammad Imran, Ivano Malavolta, Vincenzo Stoico",
+      venue: "International Conference on the Quality of Information and Communications Technology (QUATIC)",
+      year: "2026",
+      type: "Conference",
+      selected: true,
+      doi: "",
+      pdf: "https://arxiv.org/pdf/2607.06124",
+      code: "https://github.com/imran9pk/replication-package_method_energy_java"
+    },
+    {
       id: "pub-saner-2026",
       title: "An Empirical Investigation on the use of Large Language Models for Performance Bug Detection",
       authors: "Muhammad Imran, Vittorio Cortellessa, Davide Di Ruscio, Riccardo Rubei, Luca Traini",
@@ -119,21 +131,9 @@ export const profileData = {
       year: "2026",
       type: "Conference",
       selected: true,
-      doi: "#",
-      pdf: "#",
-      code: "https://github.com/imran9pk"
-    },
-    {
-      id: "pub-icpc-2026",
-      title: "Method-Level Energy Prediction in Java Using Code Features and Execution Time",
-      authors: "Muhammad Imran, Ivano Malavolta, Vincenzo Stoico",
-      venue: "International Conference on Program Comprehension (ICPC) — Under Review",
-      year: "2026",
-      type: "Under Review",
-      selected: true,
-      doi: "",
-      pdf: "#",
-      code: "https://github.com/imran9pk"
+      doi: "https://doi.org/10.1109/SANER67736.2026.00044",
+      pdf: "",
+      code: "https://github.com/imran9pk/replication-package_perf_bugs_detection_LLM"
     },
     {
       id: "pub-emse-2025",
@@ -143,9 +143,9 @@ export const profileData = {
       year: "2025",
       type: "Journal",
       selected: true,
-      doi: "https://doi.org/10.1007/s10664-024-10565-x",
-      pdf: "#",
-      code: "https://github.com/imran9pk"
+      doi: "https://doi.org/10.1007/s10664-025-10712-3",
+      pdf: "",
+      code: "https://github.com/SpencerLabAQ/performance-test-coverage"
     },
     {
       id: "pub-ease-2024",
@@ -155,9 +155,9 @@ export const profileData = {
       year: "2024",
       type: "Conference",
       selected: false,
-      doi: "https://doi.org/10.1145/3661167.3661210",
-      pdf: "#",
-      code: "https://github.com/imran9pk"
+      doi: "https://doi.org/10.1145/3661167.3661196",
+      pdf: "",
+      code: "https://github.com/SpencerLabAQ/replication-package_performance-test-coverage"
     },
     {
       id: "pub-ccit-2016",
@@ -167,8 +167,8 @@ export const profileData = {
       year: "2016",
       type: "Conference",
       selected: false,
-      doi: "https://doi.org/10.15224/978-1-63248-092-7-39",
-      pdf: "#",
+      doi: "",
+      pdf: "https://www.researchgate.net/publication/324062674_Dynamic_Analysis_for_Security_Testing_of_WEB_Based_Applications_Using_Agent_Technology",
       code: ""
     },
     {
@@ -179,8 +179,8 @@ export const profileData = {
       year: "2015",
       type: "Journal",
       selected: false,
-      doi: "https://doi.org/10.5815/ijisa.2015.01.03",
-      pdf: "#",
+      doi: "https://doi.org/10.5815/ijisa.2015.01.07",
+      pdf: "",
       code: ""
     },
     {
@@ -192,7 +192,7 @@ export const profileData = {
       type: "Journal",
       selected: false,
       doi: "",
-      pdf: "#",
+      pdf: "https://www.academia.edu/download/50379382/Improving-the-Operating-System-Resource-Management.pdf",
       code: ""
     }
   ],
