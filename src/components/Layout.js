@@ -1,8 +1,14 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "@/components/Sidebar";
 
 export default function Layout({ theme, toggleTheme }) {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <div className="min-h-screen bg-[#eef1ea] dark:bg-[#161d18] text-stone-900 dark:text-stone-100 font-serif transition-colors duration-300">
       <Sidebar theme={theme} toggleTheme={toggleTheme} />
