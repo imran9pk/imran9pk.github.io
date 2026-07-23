@@ -196,36 +196,56 @@ export const profileData = {
       code: ""
     }
   ],
+  skills: [
+    {
+      category: "AI & LLM",
+      items: ["LLM evaluation & benchmarking", "Prompt engineering", "Structured output extraction", "Fine-tuning (QLoRA, SFT)", "Hugging Face Transformers"]
+    },
+    {
+      category: "Languages",
+      items: ["Python", "Java", "SQL", "C#"]
+    },
+    {
+      category: "ML & Data",
+      items: ["Scikit-learn", "PyTorch", "SHAP", "Feature engineering", "Static & dynamic code analysis", "Dataset construction", "Model evaluation"]
+    },
+    {
+      category: "Infrastructure & Tools",
+      items: ["REST APIs", "Git", "SLURM (HPC cluster job management)"]
+    }
+  ],
   projects: [
     {
-      title: "Performance Bug Detection using Large Language Models",
-      description: "Evaluating the efficacy of advanced generative LLMs (GPT-4, Llama, Gemini) in identifying performance regressions and bottlenecks in complex object-oriented software.",
-      tags: ["LLMs", "Performance Engineering", "Empirical study"],
-      bgUrl: "https://images.pexels.com/photos/34804021/pexels-photo-34804021.jpeg"
+      title: "LLM-Based Distributed Trace Analysis Pipeline",
+      period: "2025 – Present",
+      affiliation: "Extension of TraceLLM benchmark · SPENCER Lab",
+      description: "Extended an LLM evaluation benchmark for distributed trace analysis (OpenTelemetry), introducing a token-efficient serialization format (TOON) achieving ~40% token reduction across 9,000+ structured records. Evaluated multiple LLMs on structured log analysis tasks using RAG-compatible context representations, comparing retrieval accuracy across five serialization formats.",
+      tags: ["LLMs", "Distributed Tracing", "RAG"],
+      code: ""
     },
     {
-      title: "Code Coverage of Performance Tests in Java Systems",
-      description: "An empirical investigation tracking how software complexity, test composition, and architectural patterns correlate with the coverage profile of performance test suites.",
-      tags: ["Performance Testing", "Java Systems", "Code Coverage"],
-      bgUrl: "https://images.pexels.com/photos/20396530/pexels-photo-20396530.jpeg"
+      title: "LLM-Based Performance Bug Detection Tool",
+      period: "2024 – 2025",
+      affiliation: "Published at SANER 2026",
+      description: "Fine-tuned Qwen2.5-Coder-7B using QLoRA for automated detection of performance antipatterns in Java source code, achieving measurable improvement over zero-shot and few-shot baselines. Built a prompt engineering framework with structured output extraction and evaluation infrastructure across multiple LLM configurations.",
+      tags: ["LLM Fine-Tuning", "QLoRA", "Performance Bugs"],
+      code: "https://github.com/imran9pk/replication-package_perf_bugs_detection_LLM"
     },
     {
-      title: "Method-Level Energy Prediction in Java",
-      description: "A collaborative effort mapping code metrics and execution profiles to power consumption, providing developers with compiler-level energy diagnostics.",
-      tags: ["Green Computing", "Energy Modeling", "Static Analysis"],
-      bgUrl: "https://images.pexels.com/photos/330771/pexels-photo-330771.jpeg"
+      title: "Performance Test Coverage Analyzer",
+      period: "2022 – 2024",
+      affiliation: "Published at EMSE 2025, EASE 2024",
+      description: "Built a static and dynamic analysis pipeline to extract code features from large Java systems and model their relationship to performance test coverage. Trained and evaluated ML classifiers, including CodeBERT and GraphCodeBERT, on method-level features extracted from 15+ open-source Java projects.",
+      tags: ["Static Analysis", "CodeBERT", "Java"],
+      code: "https://github.com/SpencerLabAQ/performance-test-coverage"
     },
     {
-      title: "Agent-Based Security Testing of Web Applications",
-      description: "Multi-agent framework that crawls web architectures dynamically, simulating hostile actors to uncover vulnerabilities in session management and input validation.",
-      tags: ["Agent Technology", "Dynamic Analysis", "Security Testing"],
-      bgUrl: "https://images.pexels.com/photos/34804021/pexels-photo-34804021.jpeg"
-    },
-    {
-      title: "Arabic Plagiarism Detection System",
-      description: "Implementing query optimization and custom indexing pipelines to scan and match stylistic and semantic patterns across large-scale Arabic corpora.",
-      tags: ["Information Retrieval", "Plagiarism Detection", "NLP"],
-      bgUrl: "https://images.pexels.com/photos/330771/pexels-photo-330771.jpeg"
+      title: "Method-Level Energy Prediction Pipeline",
+      period: "2025",
+      affiliation: "Published at QUATIC 2026 · Vrije Universiteit Amsterdam",
+      description: "Built an end-to-end pipeline to predict energy consumption of Java methods using static code features and execution time, combining profiling instrumentation with ML-based modeling. Applied SHAP analysis to identify dominant predictors, providing interpretable energy estimates without requiring full dynamic profiling.",
+      tags: ["Energy Estimation", "SHAP", "Java"],
+      code: "https://github.com/imran9pk/replication-package_method_energy_java"
     }
   ],
   teaching: [
@@ -241,6 +261,31 @@ export const profileData = {
       institution: "Iqra University, Islamabad Campus",
       period: "Jul 2015 – Jan 2019"
     }
+  ],
+  administrativeService: [
+    {
+      role: "Co-PI, EU-funded research project",
+      description: "Led establishment of a 50-workstation computer laboratory (approx. €50,000), overseeing procurement, setup, and operationalization.",
+      institution: "International Islamic University Islamabad",
+      period: "2019 – 2022"
+    },
+    {
+      role: "Coordinator, National Program Accreditation Committee (HEC Pakistan)",
+      description: "Curriculum review and learning outcome documentation.",
+      institution: "International Islamic University Islamabad",
+      period: "2019 – 2022"
+    },
+    {
+      role: "Undergraduate Final Year Project Coordinator",
+      description: "Managed project allocation, supervision workflows, and assessment processes across graduating cohorts.",
+      institution: "Iqra University, Islamabad Campus",
+      period: "2015 – 2019"
+    }
+  ],
+  studentSupervision: [
+    "Co-supervised one M.Sc. student at the University of L’Aquila, Italy (completed).",
+    "Supervised B.Sc. Final Year Projects across two universities (IIU and Iqra University), mentoring students on problem framing, implementation, and evaluation.",
+    "Delivered a guest lecture and hands-on Java tutorial on Software Design Patterns for a graduate-level course at Vrije Universiteit Amsterdam, in collaboration with Assoc. Prof. Ivano Malavolta."
   ],
   academicService: [
     {
@@ -292,33 +337,27 @@ export const profileData = {
   news: [
     {
       date: "Jul 2026",
-      content: "New paper on predicting Java method energy usage with execution time accepted at QUATIC 2026! ⚡",
-      category: "publication"
+      content: "New paper on predicting Java method energy usage with execution time accepted at QUATIC 2026."
     },
     {
       date: "Jan 2026",
-      content: "Paper on Large Language Models for Performance Bug Detection accepted at SANER 2026! 🚀",
-      category: "publication"
+      content: "Paper on Large Language Models for Performance Bug Detection accepted at SANER 2026."
     },
     {
       date: "Dec 2025",
-      content: "Honored to join the Artifact Evaluation Committee for ISSTA 2026 and the Open Science Committee for ECSA 2026! 📋",
-      category: "service"
+      content: "Joined the Artifact Evaluation Committee for ISSTA 2026 and the Open Science Committee for ECSA 2026."
     },
     {
       date: "Dec 2025",
-      content: "Successfully defended PhD dissertation at the University of L'Aquila and starting as a Postdoctoral Researcher! 🎓",
-      category: "milestone"
+      content: "Successfully defended PhD dissertation at the University of L'Aquila and started as a Postdoctoral Researcher."
     },
     {
       date: "Aug 2025",
-      content: "Our empirical study on Code Coverage of Performance Tests is published in EMSE! 📚",
-      category: "publication"
+      content: "Empirical study on Code Coverage of Performance Tests published in Empirical Software Engineering (EMSE)."
     },
     {
       date: "Feb 2025",
-      content: "Joined the Software and Sustainability (S²) Group at Vrije Universiteit Amsterdam as a Scientific Collaborator! 🇳🇱",
-      category: "collaboration"
+      content: "Joined the Software and Sustainability (S²) Group at Vrije Universiteit Amsterdam as a Scientific Collaborator."
     }
   ]
 };

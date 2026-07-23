@@ -8,7 +8,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        heading: ["'Space Grotesk'", "sans-serif"],
+        heading: ["Georgia", "'Iowan Old Style'", "'Palatino Linotype'", "serif"],
+        serif: ["Georgia", "'Iowan Old Style'", "'Palatino Linotype'", "serif"],
         sans: ["'IBM Plex Sans'", "sans-serif"],
         mono: ["'IBM Plex Mono'", "monospace"],
       },
