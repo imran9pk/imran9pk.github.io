@@ -94,8 +94,8 @@ export default function Sidebar({ theme, toggleTheme }) {
       {/* DESKTOP SIDEBAR */}
       <aside className="hidden lg:flex fixed top-0 bottom-0 left-0 w-64 bg-[#26392d] flex-col justify-between p-8 z-30">
         <div className="flex flex-col gap-8">
-          <div className="flex items-center gap-3">
-            <div className="w-14 h-14 rounded-lg overflow-hidden shrink-0 border border-white/10">
+          <div className="flex flex-col gap-3">
+            <div className="w-16 h-16 rounded-lg overflow-hidden shrink-0 border border-white/10">
               <img
                 src={profileData.personal.avatar}
                 alt={profileData.personal.name}

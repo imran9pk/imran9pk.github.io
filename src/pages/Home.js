@@ -19,9 +19,17 @@ export default function Home() {
       <div className="space-y-4 text-[15px] leading-relaxed text-stone-700 dark:text-stone-300 max-w-2xl mb-6">
         <p>
           I am a Postdoctoral Researcher at the <strong>SPENCER Laboratory</strong>, University of L&rsquo;Aquila, Italy,
-          working at the intersection of empirical software engineering and software performance. My research builds
-          automated techniques &mdash; combining empirical methods, machine learning, and large language models &mdash; to
-          catch performance regressions and estimate energy usage in Java systems before code reaches production.
+          working at the intersection of empirical software engineering and software performance. My research combines
+          empirical methods, machine learning, and large language models into automated techniques that catch
+          performance regressions and estimate energy usage in Java systems before code ever reaches production.
+        </p>
+        <p>
+          In practice, that means fine-tuning open-source LLMs, engineering ML pipelines on large Java codebases, and
+          running controlled experiments end to end. You can find the technical specifics and tools on the{" "}
+          <Link to="/projects" className="text-emerald-700 dark:text-emerald-400 hover:underline font-semibold">
+            Projects &amp; Skills
+          </Link>{" "}
+          page.
         </p>
         <p>
           Prior to my postdoc, I completed my Ph.D. at the University of L&rsquo;Aquila, collaborating with the Vrije
@@ -39,6 +47,12 @@ export default function Home() {
         >
           Download CV <FileText className="w-4 h-4" />
         </a>
+        <Link
+          to="/projects"
+          className="inline-flex items-center gap-2 px-4 py-2 font-sans text-sm font-semibold border border-stone-300 dark:border-stone-700 hover:border-emerald-600 dark:hover:border-emerald-400 rounded transition-colors"
+        >
+          Projects &amp; Skills <ArrowRight className="w-4 h-4" />
+        </Link>
         <Link
           to="/publications"
           className="inline-flex items-center gap-2 px-4 py-2 font-sans text-sm font-semibold border border-stone-300 dark:border-stone-700 hover:border-emerald-600 dark:hover:border-emerald-400 rounded transition-colors"
